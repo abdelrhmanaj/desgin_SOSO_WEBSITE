@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", "Cairo", sans-serif;
+  
+  --color-gold-50: #FFF7ED;
+  --color-gold-100: #FDE8D1;
+  --color-gold-200: #F6CFA4;
+  --color-gold-300: #E9AC73;
+  --color-gold-400: #C9824B;
+  --color-gold-500: #A85F38;
+  --color-gold-600: #85452E;
+  --color-gold-700: #673426;
+  --color-gold-800: #4B261F;
+  --color-gold-900: #321A17;
+  --color-gold-950: #1F100E;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    --page-bg: #F7F1EA;
+    --page-bg-soft: #FFF8F1;
+    --surface: #FFFDF9;
+    --surface-muted: #F2E7DD;
+    --text-main: #241E1B;
+    --text-soft: #5F5149;
+    --text-muted: #7A6A61;
+    --border-soft: rgba(91, 59, 40, 0.14);
+    @apply font-sans transition-colors duration-300 ease-in-out;
+    background-color: var(--page-bg);
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(247,241,234,0.96));
+    color: var(--text-main);
+  }
+
+  body.dark {
+    --page-bg: #101014;
+    --page-bg-soft: #151018;
+    --surface: #1B161F;
+    --surface-muted: #24202A;
+    --text-main: #F3EEE7;
+    --text-soft: #D5C9BD;
+    --text-muted: #AFA399;
+    --border-soft: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    background-color: var(--page-bg);
+    background-image: linear-gradient(180deg, #151018, #101014);
+  }
+
+  #root {
+    min-height: 100vh;
+    background: inherit;
+  }
+
+  [dir="rtl"] body {
+    font-family: "Cairo", "Montserrat", sans-serif;
+  }
+
+  [dir="rtl"] .tracking-wide,
+  [dir="rtl"] .tracking-wider,
+  [dir="rtl"] .tracking-widest,
+  [dir="rtl"] .uppercase {
+    letter-spacing: 0;
+  }
+  
+  /* Form styling utility */
+  input, select, textarea {
+    @apply rounded-md py-2 px-3 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition;
+    background-color: color-mix(in srgb, var(--surface) 82%, transparent);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-soft);
+}
+
+.dark .glass {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border-soft);
+}
+
+body:not(.dark) .bg-white,
+body:not(.dark) .bg-stone-50,
+body:not(.dark) .bg-stone-100 {
+  background-color: var(--surface) !important;
+}
+
+body.dark .bg-white,
+body.dark .bg-stone-50,
+body.dark .bg-stone-100,
+body.dark .bg-stone-200 {
+  background-color: var(--surface) !important;
+}
+
+body:not(.dark) .bg-\[\#121212\],
+body:not(.dark) .bg-\[\#0c0c0c\],
+body:not(.dark) .bg-\[\#0a0a0a\] {
+  background-color: var(--surface) !important;
+}
+
+body.dark .bg-\[\#121212\],
+body.dark .bg-\[\#0c0c0c\],
+body.dark .bg-\[\#0a0a0a\],
+body.dark .dark\:bg-\[\#121212\],
+body.dark .dark\:bg-\[\#0c0c0c\],
+body.dark .dark\:bg-\[\#0a0a0a\] {
+  background-color: var(--surface) !important;
+}
+
+body.dark .border-black\/5,
+body.dark .border-black\/10 {
+  border-color: var(--border-soft) !important;
+}
+
+body:not(.dark) .text-\[\#111111\],
+body:not(.dark) .text-\[\#241E1B\],
+body:not(.dark) [class*="text-[#111111]"],
+body:not(.dark) [class*="text-[#241E1B]"] {
+  color: var(--text-main) !important;
+}
+
+body.dark .text-\[\#111111\],
+body.dark .text-\[\#241E1B\],
+body.dark [class*="text-[#111111]"],
+body.dark [class*="text-[#241E1B]"] {
+  color: var(--text-main) !important;
+}
+
+body:not(.dark) .text-stone-400,
+body:not(.dark) .text-stone-500,
+body:not(.dark) .text-stone-600,
+body:not(.dark) .text-gray-400,
+body:not(.dark) .text-gray-500,
+body:not(.dark) .text-gray-600 {
+  color: var(--text-soft) !important;
+}
+
+body.dark .text-stone-300,
+body.dark .text-stone-400,
+body.dark .text-stone-500,
+body.dark .text-stone-600,
+body.dark .text-stone-700,
+body.dark .text-gray-300,
+body.dark .text-gray-400,
+body.dark .text-gray-500,
+body.dark .text-gray-600,
+body.dark .text-gray-700 {
+  color: var(--text-soft) !important;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background-color: #0D0B10 !important;
+  color: var(--text-main) !important;
+}
+
+body:not(.dark) input,
+body:not(.dark) select,
+body:not(.dark) textarea {
+  background-color: #FFFDF9 !important;
+  color: var(--text-main) !important;
+}
+
+body.dark option {
+  background-color: #17131a;
+  color: var(--text-main);
+}
+
+.page-enter {
+  animation: page-enter 560ms ease-out both;
+}
+
+.luxury-card-motion {
+  animation: luxury-rise 700ms ease-out both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes luxury-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Custom Scrollbar for Luxury Aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-300 dark:bg-gold-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-400 dark:bg-gold-600;
+}
